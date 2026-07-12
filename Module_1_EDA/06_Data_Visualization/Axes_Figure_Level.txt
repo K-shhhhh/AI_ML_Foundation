@@ -1,0 +1,32 @@
+The Cheat Sheet: Axes-level vs. Figure-level
+
+To use Seaborn professionally, you need to know which functions play nicely with Matplotlib's ax and which ones act as standalone managers.
+
+1. Axes-Level Functions (The Polite Workers) : 
+
+    These draw specific, single charts. They always accept the ax=ax parameter so you can place them inside complex Matplotlib layouts.
+
+    Examples :-
+
+       - sns.lineplot()
+
+       - sns.scatterplot()
+
+       - sns.histplot()
+
+       - sns.boxplot()
+
+       - sns.barplot()
+
+2. Figure-Level Functions (The Control Freaks) :
+
+    These are umbrella functions designed to create multi-plot grids automatically (using FacetGrid). They do not accept ax=ax. 
+    You must let them manage the whole figure. 
+    
+    Examples :-
+
+        - sns.relplot() (The umbrella for lineplot and scatterplot)
+
+        - sns.displot() (The umbrella for histplot and kdeplot)
+
+        - sns.catplot() (The umbrella for boxplot, barplot, violinplot)

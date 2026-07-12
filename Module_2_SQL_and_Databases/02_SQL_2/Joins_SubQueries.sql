@@ -1,0 +1,125 @@
+-- JOINS ARE USED TO COMBINE ROWS FROM 2 OR MORE TABLE BASED ON RELATED COLUMNS BETWEEN THEM, VERY SIMILAR TO MERGE FUNCTION IN PANDAS
+-- 4 TYPES OF JOINS:-
+
+/*
+	1. INNER JOIN : ONLY INTERSECTION BETWEEN TABLE A AND B 
+    2. LEFT JOIN : TABLE A + INTERSECTION BETWEEN A AND B
+    3. RIGHT JOIN : TABLE B + INTERSECTION BETWEEN A AND B
+    4. FULL JOIN : TABLE A + TABLE B + INTERSECTION BETWEEN A AND B (
+    5. CROSS JOIN : ALL THE ROWS OF TABLE A WILL BE JOINED WITH ALL THE ROWS OF TABLE B 
+    6. SELF JOIN : NORMAL JOIN ONLY BUT THE TABLE IS JOINED WITH ITSELF
+    7. LEFT EXCLUSIVE JOIN : TABLE A - INTERSECTION BETWEEN A AND B
+    8. RIGHT EXCLUSIVE JOIN : TABLE B - INTERSECTION BETWEEN A AND B
+*/
+
+CREATE DATABASE IF NOT EXISTS Inventory;
+
+USE Inventory;
+
+CREATE TABLE Customers(
+	Customer_ID INT PRIMARY KEY,
+    Name VARCHAR(30),
+    City VARCHAR(30)
+);
+
+INSERT INTO Customers
+(Customer_ID, Name, City)
+VALUES
+(1,"Alice","Mumbai"),
+(2,"Bob","Delhi"),
+(3,"Charlie","Bangalore"),
+(4,"David","Mumbai");
+
+CREATE TABLE Orders(
+	Order_ID INT PRIMARY KEY,
+    Customer_ID INT,
+    Amount INT
+);
+
+INSERT INTO Orders
+(Order_ID, Customer_ID, Amount)
+VALUES
+(101,1,500),
+(102,1,900),
+(103,2,300),
+(104,5,700);
+
+SELECT * FROM Orders;
+
+-- 1. INNER JOIN
+
+SELECT * -- WHICH COLUMNS WE WANT IN THE JOIN
+FROM Customers -- FROM WHICH TABLE [only matching values of this table will be shown]
+INNER JOIN Orders -- TO WHICH TABLE [only matching values of this table will be shown]
+ON Customers.Customer_ID = Orders.Customer_ID; -- THERE SHOULD BE ATLEAST ONE COMMON COLUMN IN BOTH TABLES
+
+-- 2. LEFT JOIN
+
+SELECT * -- WHICH COLUMNS WE WANT IN THE JOIN
+FROM Customers -- FROM WHICH TABLE [All values of this table will be shown]
+LEFT JOIN Orders -- TO WHICH TABLE [only matching values of this table will be shown]
+ON Customers.Customer_ID = Orders.Customer_ID; -- THERE SHOULD BE ATLEAST ONE COMMON COLUMN IN BOTH TABLES
+
+
+-- 3. RIGHT JOIN
+
+SELECT * -- WHICH COLUMNS WE WANT IN THE JOIN
+FROM Customers -- FROM WHICH TABLE [only matching values of this table will be shown]
+RIGHT JOIN Orders -- TO WHICH TABLE [All values of this table will be shown]
+ON Customers.Customer_ID = Orders.Customer_ID; -- THERE SHOULD BE ATLEAST ONE COMMON COLUMN IN BOTH TABLES
+
+-- 4. OUTER JOIN (FOR THIS, WE DO UNION OF RIGHT AND LEFT JOINS SO THAT ALL THE DATA CAN BE SHOWN)
+
+SELECT *
+FROM Customers 
+LEFT JOIN Orders 
+ON Customers.Customer_ID = Orders.Customer_ID -- LEFT JOIN
+UNION -- COMBINING THEM
+SELECT * 
+FROM Customers 
+RIGHT JOIN Orders 
+ON Customers.Customer_ID = Orders.Customer_ID; -- RIGHT JOIN
+
+-- 5. CROSS JOIN (longest and kind of useless tbh)
+
+SELECT * 
+FROM Customers
+CROSS JOIN Orders;
+
+-- 6. SELF JOIN (IDENTICAL OUTPUT AND KIND OF USELESS AS WELL)
+
+SELECT * 
+FROM Customers AS A
+JOIN Customers AS B
+ON A.Customer_ID = B.Customer_ID;
+
+-- 7. LEFT EXCLUSIVE JOIN
+
+SELECT * 
+FROM Customers 
+LEFT JOIN Orders 
+ON Customers.Customer_ID = Orders.Customer_ID -- LEFT JOIN
+WHERE Orders.Customer_ID IS NULL; -- MINUS THE INTERSECTION VALUES
+
+-- 8. RIGHT EXCLUSIVE JOIN
+
+SELECT * 
+FROM Customers 
+RIGHT JOIN Orders 
+ON Customers.Customer_ID = Orders.Customer_ID -- RIGHT JOIN
+WHERE Customers.Customer_ID IS NULL; -- MINUS THE INTERSECTION VALUES
+
+-- SUB QUERIES : A QUERY INSIDE A QUERY, IT GENERALLY HAS 2 SELECT STATEMENTS, INNER QUERY GIVES AN OUTPUT AND OUTER QUERY RUNS ON IT
+	 -- NOTE 1 : SUB QUERY IS MOST COMMONLY USED WITH WHERE CLAUSE
+     
+-- Q1. PRINT DATA FROM ORDERS TABLE WHERE THE AMOUNT IS GREATER THAN THE AVERAGE AMOUNT OF THE ORDERS
+
+SELECT *
+FROM Orders
+WHERE Amount > (
+	SELECT AVG(Amount)
+    FROM Orders
+);
+
+
+

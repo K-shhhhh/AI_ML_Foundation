@@ -1,0 +1,18 @@
+# Jupyter Notebook System Cache
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.virtual_documents
+*/.virtual_documents/*
+
+# Mac OS Background Junk
+.DS_Store
+__MACOSX/
+
+# Python Compilation & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
