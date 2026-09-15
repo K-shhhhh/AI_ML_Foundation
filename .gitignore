@@ -19,3 +19,5 @@ env/
 
 # Datasets
 *.csv
+dataset_cat_dog/
+dataset/
