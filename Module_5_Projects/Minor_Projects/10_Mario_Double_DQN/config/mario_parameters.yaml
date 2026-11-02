@@ -1,0 +1,28 @@
+# Settings for training the Mario agent.
+# Each block is one named set of parameters.
+# Run from the project folder with:  python train.py smoke   or   python train.py full
+
+# A very short run to check that every part of the code works:
+# learning, syncing, saving and logging all happen within a few minutes
+smoke:
+  num_episodes: 30              # stop after this many episodes
+  print_every: 1                # print a progress line every N episodes
+  save_every: 5                 # save the latest checkpoint every N episodes
+  burnin: 500                   # experiences needed in memory before learning starts
+  sync_every: 500               # copy online network to target network every N steps
+  exploration_decay: 0.999      # epsilon is multiplied by this after every step
+  checkpoint_dir: checkpoints/smoke
+  log_path: logs/training_log_smoke.csv
+
+# The real long run, about 3.8 million steps on a Mac M2.
+# The decay brings epsilon from 1 down to 0.1 in about 1 million steps,
+# because 0.9999977 ** 1000000 is about 0.1
+full:
+  num_episodes: 50000
+  print_every: 20
+  save_every: 20
+  burnin: 10000
+  sync_every: 10000
+  exploration_decay: 0.9999977
+  checkpoint_dir: checkpoints/full
+  log_path: logs/training_log_full.csv

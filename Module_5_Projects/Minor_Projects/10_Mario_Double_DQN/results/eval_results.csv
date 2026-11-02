@@ -1,0 +1,5 @@
+checkpoint,epsilon,episodes,mean_reward,max_reward,min_reward,mean_length,clears
+best,0.0,3,-21.0,-21.0,-21.0,2005.0,0
+best,0.05,30,1708.7,3020.0,231.0,309.0,3
+latest,0.0,3,3023.0,3023.0,3023.0,491.0,3
+latest,0.05,30,1814.7,3025.0,231.0,431.3,7
