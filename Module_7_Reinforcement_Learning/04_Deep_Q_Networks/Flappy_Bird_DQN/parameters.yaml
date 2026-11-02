@@ -1,0 +1,19 @@
+# yaml stands for YET ANOTHER MARKUP LANGUAGE
+# it is used to store settings as simple name: value pairs
+# the parameters we used to write inside the python file itself can live here and be read dynamically
+
+# name of this parameter set, the same name is used for the saved model and the log file in runs/
+flappybirdv0:
+
+  # all the parameters for this particular set are stored here
+
+  env_id: FlappyBird-v0 # same as the gym env.
+  epsilon_init: 1 # starting epsilon value
+  epsilon_min: 0.05 # minimum epsilon value after decay, so a little exploration never stops
+  epsilon_decay: 0.99 # rate of decay, epsilon is multiplied by this after every episode
+  replay_memory_size: 100000 # max number of experiences stored in the replay memory
+  mini_batch_size: 32 # the batch size to be passed in DQN
+  network_sync_rate: 1000 # after how many training steps the target network gets updated from the policy network
+  alpha: 0.001 # learning rate
+  gamma: 0.99 # discount factor
+  reward_threshold: 1000 # max reward threshold after which the training loop gets terminated
