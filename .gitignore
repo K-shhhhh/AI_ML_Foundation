@@ -28,6 +28,6 @@ Module_5_Projects/**/*.pt
 
 # Exceptions: Flappy bird model, Mario results and the one published checkpoint
 !Module_7_Reinforcement_Learning/04_Deep_Q_Networks/Flappy_Bird_DQN/**/*.pt
-!Module_5_Projects/Minor_Projects/Mario_Double_DQN/logs/training_log_full.csv
-!Module_5_Projects/Minor_Projects/Mario_Double_DQN/results/eval_results.csv
-!Module_5_Projects/Minor_Projects/Mario_Double_DQN/checkpoints/full/mario_latest.pt
+!Module_5_Projects/Minor_Projects/10_Mario_Double_DQN/logs/training_log_full.csv
+!Module_5_Projects/Minor_Projects/10_Mario_Double_DQN/results/eval_results.csv
+!Module_5_Projects/Minor_Projects/10_Mario_Double_DQN/checkpoints/full/mario_latest.pt
