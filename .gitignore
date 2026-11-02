@@ -21,3 +21,12 @@ env/
 *.csv
 dataset_cat_dog/
 dataset/
+
+# Models (checkpoints stay local)
+Module_7_Reinforcement_Learning/**/*.pt
+Module_5_Projects/**/*.pt
+
+# Exceptions: Mario results and the one published checkpoint
+!Module_5_Projects/Minor_Projects/Mario_Double_DQN/logs/training_log_full.csv
+!Module_5_Projects/Minor_Projects/Mario_Double_DQN/results/eval_results.csv
+!Module_5_Projects/Minor_Projects/Mario_Double_DQN/checkpoints/full/mario_latest.pt
