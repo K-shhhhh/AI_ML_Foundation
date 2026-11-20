@@ -13,7 +13,7 @@ Synthetic data via `sklearn.datasets.make_regression`, chosen specifically so mo
 | Linear Regression | 0.9357 |
 | Random Forest (depth=8, 201 trees) | 0.6609 |
 | Gradient Boosting (depth=3, 201 trees) | 0.9206 |
-| ANN (64→128→256→1, 50 epochs) | *0.93* |
+| ANN (256→128→64→1, 50 epochs, best epoch 8) | 0.9341 |
 
 ## Findings
 
